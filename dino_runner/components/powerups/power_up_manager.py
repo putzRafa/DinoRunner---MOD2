@@ -10,10 +10,10 @@ class PowerUpManager():
 
     def generate_power_up(self, score):
         if len(self.power_ups) == 0 and self.when_appars == score:
-            self.when_appars += random.randint(0, 500)
+            self.when_appars += random.randint(200, 300)
             self.power_ups.append (Shield())
 
-            self.when_appars += random.randint(0, 400)#INTERVALO PARA APARECER
+            self.when_appars += random.randint(400, 500)#INTERVALO PARA APARECER
             self.power_ups.append (Hammer()) #ADIÇÃO DO MARTELO
 
     def update(self, score, game_speed, player):

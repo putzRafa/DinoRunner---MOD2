@@ -7,15 +7,21 @@ SCREEN_HEIGHT = 600
 SCREEN_WIDTH = 1100
 FPS = 30
 IMG_DIR = os.path.join(os.path.dirname(__file__), "..", "assets")
+SOUND_DIR = os.path.join(os.path.dirname(__file__), "..", "assets/Other")
+pygame.mixer.init() #inicializador das musicas
 
 # Assets Constants
 ICON = pygame.image.load(os.path.join(IMG_DIR, "DinoWallpaper.png"))
 
-EXPLODE = pygame.image.load(os.path.join(IMG_DIR, "Other/Explosao.png"))
+INICIAL_SCREEN = pygame.image.load(os.path.join(IMG_DIR, "Other/chrome-dino-logo.png"))
 
-GAME_OVER = pygame.image.load(os.path.join(IMG_DIR, "Other/GameOver.png"))
+EXPLODE = pygame.image.load(os.path.join(IMG_DIR, "Other/Explosao.png"))# animação de destruição
 
-BACKGROUND = pygame.image.load(os.path.join(IMG_DIR, "CeuEstrelado.jpg"))
+GAME_OVER = pygame.image.load(os.path.join(IMG_DIR, "Other/GameOver.png"))# tela de game over
+
+DEATH_SOUND = pygame.mixer.Sound(os.path.join(SOUND_DIR, "SoundMusic/FailSound.mp3"))# musica para perda
+
+BACKGROUND = pygame.image.load(os.path.join(IMG_DIR, "CeuEstrelado.jpg"))#novo backgorund
 
 RUNNING = [
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun1.png")),

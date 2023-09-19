@@ -3,11 +3,13 @@ import random
 from dino_runner.components.obstacles.cactus import Cactus
 from dino_runner.components.obstacles.bird import Bird
 from dino_runner.utils.constants import EXPLODE
+from dino_runner.utils.constants import DEATH_SOUND
 
 class ObstacleManager:
     def __init__(self):
         self.obstacles = []
-        #self.explosion_image = pygame.image.load(EXPLODE)  # Carrega a imagem de explosão
+        self.death_sound = DEATH_SOUND
+        self.death_sound.set_volume(0.4)
 
     def update(self, game):
         obstacle_type = [Cactus(), Bird()]
@@ -19,6 +21,7 @@ class ObstacleManager:
             obstacle.update(game.game_speed, self.obstacles)
             if game.player.dino_rect.colliderect(obstacle.rect):
                 if not game.player.has_power_up:
+                    self.death_sound.play()
                     pygame.time.delay(500)
                     game.playing = False
                     game.death_count += 1

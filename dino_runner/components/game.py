@@ -1,6 +1,6 @@
 import pygame
 
-from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, DEFAULT_TYPE, CLOUD, GAME_OVER, BACKGROUND
+from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, DEFAULT_TYPE, CLOUD, GAME_OVER, BACKGROUND, INICIAL_SCREEN
 from dino_runner.components.dinosaur import Dinosaur
 from dino_runner.components.obstacles.obstacle_manager import ObstacleManager
 from dino_runner.utils.text_utils import draw_message_component
@@ -26,6 +26,7 @@ class Game:
         self.player = Dinosaur()
         self.obstacle_manager = ObstacleManager()
         self.power_up_manager = PowerUpManager()
+        self.font_color = (0, 0, 0)
 
     def execute(self):
         self.running = True
@@ -83,9 +84,12 @@ class Game:
         pygame.display.flip()
     
     def draw_background(self): 
-        if self.score > 400 and self.score < 499:
+        if self.score > 400 and self.score < 599:
             new_background = BACKGROUND
             self.screen.blit(new_background, (0,0))
+            self.font_color = (255, 255, 255)
+        else:
+            self.font_color = (0, 0, 0)
 
         image_width = BG.get_width()
         self.screen.blit(BG, (self.x_pos_bg, self.y_pos_bg))    
@@ -101,12 +105,14 @@ class Game:
             self.screen,
             pos_x_center=1000,
             pos_y_center= 50,
+            font_color = self.font_color
         )
         draw_message_component(
             f" Melhor Pontuação: {self.better_score}",
             self.screen,
             pos_x_center= 957,
             pos_y_center= 25,
+            font_color = self.font_color
             )
 
 
@@ -119,8 +125,8 @@ class Game:
                     self.screen,
                     font_size = 18,        
                     pos_x_center = 500,  
-                    pos_y_center = 40,  
- 
+                    pos_y_center = 40, 
+                    font_color = self.font_color
                 )
             else:
                 self.player.has_power_up = False
@@ -151,7 +157,9 @@ class Game:
         half_screen_width = SCREEN_WIDTH // 2
 
         if self.death_count == 0:
-            draw_message_component("Pressione qualquer tecla para iniciar", self.screen)
+            draw_message_component("Pressione qualquer tecla para iniciar", self.screen, pos_y_center=half_screen_height + 200)
+            draw_message_component("Feito por Rafael Farias", self.screen, pos_y_center=half_screen_height - 280)
+            self.screen.blit(INICIAL_SCREEN, (half_screen_height, half_screen_width - 320))
         else:
             draw_message_component("Pressione qualquer tecla para Reiniciar", self.screen, pos_y_center=half_screen_height + 140)
             draw_message_component(
