@@ -10,10 +10,10 @@ class PowerUpManager():
 
     def generate_power_up(self, score):
         if len(self.power_ups) == 0 and self.when_appars == score:
-            self.when_appars += random.randint(200, 300)
+            self.when_appars += random.randint(0, 500)
             self.power_ups.append (Shield())
 
-            self.when_appars += random.randint(100, 200)#INTERVALO PARA APARECER
+            self.when_appars += random.randint(0, 400)#INTERVALO PARA APARECER
             self.power_ups.append (Hammer()) #ADIÇÃO DO MARTELO
 
     def update(self, score, game_speed, player):
@@ -23,7 +23,7 @@ class PowerUpManager():
             if player.dino_rect.colliderect(power_up.rect):
                 power_up.start_time = pygame.time.get_ticks()
                 player.shield = True
-                player.hammer = True # ATYIVA O MARTELO
+                player.hammer = True # ATIVA O MARTELO
                 player.has_power_up = True
                 player.type = power_up.type
                 player.power_up_timing = power_up.start_time + (power_up.duration * 1000)

@@ -7,8 +7,6 @@ from dino_runner.utils.text_utils import draw_message_component
 from dino_runner.components.powerups.power_up_manager import PowerUpManager
 
 class Game:
-
-
     def __init__(self):
         pygame.init()
         pygame.display.set_caption(TITLE)
@@ -85,6 +83,10 @@ class Game:
         pygame.display.flip()
     
     def draw_background(self): 
+        if self.score > 400 and self.score < 499:
+            new_background = BACKGROUND
+            self.screen.blit(new_background, (0,0))
+
         image_width = BG.get_width()
         self.screen.blit(BG, (self.x_pos_bg, self.y_pos_bg))    
         self.screen.blit(BG, (image_width + self.x_pos_bg, self.y_pos_bg))
@@ -144,7 +146,7 @@ class Game:
                 self.run()
 
     def show_menu(self):
-        self.screen.fill((255, 255, 255))
+        self.screen.fill((255, 255, 250))
         half_screen_height = SCREEN_HEIGHT // 2
         half_screen_width = SCREEN_WIDTH // 2
 

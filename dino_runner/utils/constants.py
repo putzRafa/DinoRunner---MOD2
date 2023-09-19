@@ -11,6 +11,8 @@ IMG_DIR = os.path.join(os.path.dirname(__file__), "..", "assets")
 # Assets Constants
 ICON = pygame.image.load(os.path.join(IMG_DIR, "DinoWallpaper.png"))
 
+EXPLODE = pygame.image.load(os.path.join(IMG_DIR, "Other/Explosao.png"))
+
 GAME_OVER = pygame.image.load(os.path.join(IMG_DIR, "Other/GameOver.png"))
 
 BACKGROUND = pygame.image.load(os.path.join(IMG_DIR, "CeuEstrelado.jpg"))
