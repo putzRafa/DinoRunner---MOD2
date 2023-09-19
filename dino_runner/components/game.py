@@ -1,6 +1,6 @@
 import pygame
 
-from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, DEFAULT_TYPE, CLOUD
+from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, DEFAULT_TYPE, CLOUD, GAME_OVER
 from dino_runner.components.dinosaur import Dinosaur
 from dino_runner.components.obstacles.obstacle_manager import ObstacleManager
 from dino_runner.utils.text_utils import draw_message_component
@@ -113,7 +113,7 @@ class Game:
             time_to_show = round((self.player.power_up_timing - pygame.time.get_ticks()) / 1000, 2)
             if time_to_show >= 0:  
                 draw_message_component(
-                    f"{self.player.type.capitalize()} enabled for {time_to_show} seconds",
+                    f"{self.player.type.capitalize()} ativo por {time_to_show} segundos",
                     self.screen,
                     font_size = 18,        
                     pos_x_center = 500,  
@@ -150,16 +150,16 @@ class Game:
         else:
             draw_message_component("Pressione qualquer tecla para Reiniciar", self.screen, pos_y_center=half_screen_height + 140)
             draw_message_component(
-                f"your score: {self.score}",
+                f"Sua Pontuação: {self.score}",
                 self.screen,
                 pos_y_center=half_screen_height - 150
             )       
             draw_message_component(
-                f"Death count: {self.death_count}",
+                f"Contagem de Mortes: {self.death_count}",
                 self.screen,
                 pos_y_center=half_screen_height - 100
             )
-            self.screen.blit(ICON, (half_screen_width - 40, half_screen_height - 30))
+            self.screen.blit(GAME_OVER, (half_screen_width -190, half_screen_height - 30))
 
             draw_message_component(
             f" Melhor Pontuação: {self.better_score}",
