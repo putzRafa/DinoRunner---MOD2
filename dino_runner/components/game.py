@@ -1,6 +1,6 @@
 import pygame
 
-from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, DEFAULT_TYPE, CLOUD, GAME_OVER
+from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, DEFAULT_TYPE, CLOUD, GAME_OVER, BACKGROUND
 from dino_runner.components.dinosaur import Dinosaur
 from dino_runner.components.obstacles.obstacle_manager import ObstacleManager
 from dino_runner.utils.text_utils import draw_message_component
@@ -126,10 +126,13 @@ class Game:
 
     def draw_cloud(self):
         image_width = CLOUD.get_width()
+        self.screen.blit(CLOUD, (self.x_pos_cloud, self.y_pos_cloud))
         self.screen.blit(CLOUD, (image_width + self.x_pos_cloud, self.y_pos_cloud))
+        self.screen.blit(CLOUD, (600 + self.x_pos_cloud, self.y_pos_cloud))
+        self.screen.blit(CLOUD, (1000 + self.x_pos_cloud, self.y_pos_cloud))
         if self.x_pos_cloud <= - image_width:
             self.screen.blit(CLOUD, (image_width + self.x_pos_cloud, self.y_pos_cloud))
-            self.x_pos_cloud = 1000
+            self.x_pos_cloud = SCREEN_WIDTH
         self.x_pos_cloud -= self.game_speed
 
     def handle_events_on_menu(self):

@@ -13,6 +13,8 @@ ICON = pygame.image.load(os.path.join(IMG_DIR, "DinoWallpaper.png"))
 
 GAME_OVER = pygame.image.load(os.path.join(IMG_DIR, "Other/GameOver.png"))
 
+BACKGROUND = pygame.image.load(os.path.join(IMG_DIR, "CeuEstrelado.jpg"))
+
 RUNNING = [
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun1.png")),
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun2.png")),
