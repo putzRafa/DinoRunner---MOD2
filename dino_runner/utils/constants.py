@@ -9,7 +9,7 @@ FPS = 30
 IMG_DIR = os.path.join(os.path.dirname(__file__), "..", "assets")
 
 # Assets Constants
-ICON = pygame.image.load(os.path.join(IMG_DIR, "DinoWallpaper.png"))
+ICON = pygame.image.load(os.path.join(IMG_DIR, "GameOver.png"))
 
 RUNNING = [
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun1.png")),
